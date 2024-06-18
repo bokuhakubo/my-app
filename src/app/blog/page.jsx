@@ -43,7 +43,8 @@ const Blog = () => {
             <a className="card w-96 bg-base-100 shadow-xl">
               <figure>
                 <Image
-                  src={`https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/${item.img}`}
+                  // src={`https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/${item.img}`}
+                  src="https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/accessory-3002608_1280-min_eq9jng.jpg"
                   alt={item.title}
                   width={500}
                   height={500}
