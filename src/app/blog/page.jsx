@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 async function getData() {
-  const res = await fetch('http://localhost:3000/api/posts', {
+  // const res = await fetch('http://localhost:3000/api/posts', {
+  const res = await fetch('https://my-iig9rk7mu-bokuhakubos-projects.vercel.app/api/posts', {
     cache: 'no-store',
   });
   if (!res.ok) {
