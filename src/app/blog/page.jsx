@@ -7,6 +7,10 @@ import Image from 'next/image';
 async function getData() {
   const res = await fetch('https://my-iig9rk7mu-bokuhakubos-projects.vercel.app/api/posts', {
     cache: 'no-store',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    mode: 'no-cors',
   });
   if (!res.ok) {
     throw new Error('Failed to fetch data');

@@ -8,6 +8,10 @@ function getData(id) {
   // return fetch(`http://localhost:3000/api/posts/${id}`, {
   return fetch(`https://my-iig9rk7mu-bokuhakubos-projects.vercel.app/api/posts/${id}`, {
     cache: 'no-store',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    mode: 'no-cors',
   })
   .then(res => {
     if (!res.ok) {
