@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 async function getData() {
-  const res = await fetch('https://my-iig9rk7mu-bokuhakubos-projects.vercel.app/api/posts', {
+  const res = await fetch('https://my-app-git-main-bokuhakubos-projects.vercel.app/api/posts', {
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',

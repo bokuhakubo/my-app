@@ -2,6 +2,11 @@ import { NextResponse } from "next/server";
 import connect from "../../../../utils/db";
 import Post from "../../../../model/Post";
 
+const allowedOrigins = [
+    'https://my-app-git-main-bokuhakubos-projects.vercel.app',
+    'https://my-4h110d16o-bokuhakubos-projects.vercel.app'
+  ];
+
 export const GET = async (request) => {
     try {
         await connect();
