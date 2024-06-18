@@ -42,14 +42,15 @@ const Blog = () => {
           <Link href={`/blog/${item._id}`} passHref>
             <a className="card w-96 bg-base-100 shadow-xl">
               <figure>
-                <Image
-                  // src={`https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/${item.img}`}
-                  src="https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/accessory-3002608_1280-min_eq9jng.jpg"
-                  alt={item.title}
-                  width={500}
-                  height={500}
-                  layout="responsive"
-                />
+              <Image
+                src={`/api/image?url=${encodeURIComponent(
+                  `https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/${item.img}`
+                )}`}
+                alt={item.title}
+                width={500}
+                height={500}
+                layout="responsive"
+              />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{item.title}</h2>
