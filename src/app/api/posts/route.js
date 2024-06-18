@@ -8,30 +8,8 @@ export const GET = async (request) => {
 
         const posts = await Post.find();
 
-        // CORSヘッダーの設定
-        const headers = {
-            "Access-Control-Allow-Origin": "*", // すべてのオリジンからアクセスを許可
-            "Access-Control-Allow-Methods": "GET, OPTIONS", // 許可するHTTPメソッド
-            "Access-Control-Allow-Headers": "Content-Type", // 許可するヘッダー
-            "Access-Control-Allow-Credentials": true, // 認証情報（クッキーなど）の送信を許可
-        };
-
-        // OPTIONSメソッドの場合はCORSプリフライトリクエストに対応
-        if (request.method === "OPTIONS") {
-            return new NextResponse(null, {
-                headers,
-                status: 200,
-            });
-        }
-
-        // 実際のデータを返す
-        return new NextResponse(JSON.stringify(posts), {
-            headers,
-            status: 200,
-        });
+        return new NextResponse(JSON.stringify(posts), { status: 200 });
     } catch (err) {
-        return new NextResponse("Database Error", {
-            status: 500,
-        });
+        return new NextResponse('Database Error', { status: 500 });
     }
-};
+}
