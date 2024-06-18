@@ -1,21 +1,36 @@
 "use client";
 
-import { notFound } from 'next/navigation'
-import React from 'react'
+import { notFound } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 import { CldImage } from 'next-cloudinary';
 
-async function getData(id) {
-  const res = await fetch(`http://localhost:3000/api/posts/${id}`, {
+function getData(id) {
+  return fetch(`http://localhost:3000/api/posts/${id}`, {
     cache: 'no-store',
   })
-  if (!res.ok) {
-    return notFound();
-  }
-  return res.json()
+  .then(res => {
+    if (!res.ok) {
+      return notFound();
+    }
+    return res.json();
+  });
 }
 
-const BlogPost = async ({ params }) => {
-  const data = await getData(params.id)
+const BlogPost = ({ params }) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getData(params.id);
+      setData(result);
+    };
+    fetchData();
+  }, [params.id]);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className='max-w-4xl mx-auto mt-8 pb-16'>
       <h2 className='mb-8 text-2xl font-bold'>{data.title}</h2>
@@ -64,7 +79,7 @@ const BlogPost = async ({ params }) => {
         </dialog>
       </div>
     </div>
-  )
+  );
 }
 
-export default BlogPost
+export default BlogPost;
