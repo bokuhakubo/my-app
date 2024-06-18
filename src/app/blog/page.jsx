@@ -6,12 +6,13 @@ import Image from 'next/image';
 
 async function getData() {
   const res = await fetch('https://my-app-git-main-bokuhakubos-projects.vercel.app/api/posts', {
-    cache: 'no-store',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-    mode: 'no-cors',
+    cache: 'no-store',
   });
+
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
