@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CldImage } from 'next-cloudinary';
 
 async function getData() {
-  const res = await fetch('https://my-app-git-main-bokuhakubos-projects.vercel.app/api/posts', {
+  const res = await fetch('http://localhost:3000/api/posts', {
+  // const res = await fetch('https://my-app-git-main-bokuhakubos-projects.vercel.app/api/posts', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -40,9 +42,9 @@ const Blog = () => {
       {data.map((item) => (
         <div key={item._id}>
           <Link href={`/blog/${item._id}`} passHref>
-            <a className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-base-100 shadow-xl">
               <figure>
-              <Image
+              {/* <Image
                 src={`/api/image?url=${encodeURIComponent(
                   `https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/${item.img}`
                 )}`}
@@ -50,13 +52,19 @@ const Blog = () => {
                 width={500}
                 height={500}
                 layout="responsive"
+              /> */}
+              <CldImage 
+                src={`https://res.cloudinary.com/dsl0go3gg/image/upload/v1718668996/${item.img}`}
+                alt={item.title}
+                width={500}
+                height={500}
               />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{item.title}</h2>
                 <p>{item.desc}</p>
               </div>
-            </a>
+            </div>
           </Link>
         </div>
       ))}

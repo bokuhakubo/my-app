@@ -5,8 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { CldImage } from 'next-cloudinary';
 
 function getData(id) {
-  // return fetch(`http://localhost:3000/api/posts/${id}`, {
-  return fetch(`https://my-app-git-main-bokuhakubos-projects.vercel.app/api/posts/${id}`, {
+  return fetch(`http://localhost:3000/api/posts/${id}`, {
+  // return fetch(`https://my-app-git-main-bokuhakubos-projects.vercel.app/api/posts/${id}`, {
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
